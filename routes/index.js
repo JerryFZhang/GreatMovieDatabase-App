@@ -8,7 +8,7 @@ var connectionString = process.env.DATABASE_URL || 'postgres://postgres:*******M
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index');
 });
 
 module.exports = router;
