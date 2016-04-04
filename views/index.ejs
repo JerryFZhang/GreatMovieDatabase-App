@@ -16,16 +16,18 @@
         <input type="button" id = "login"onclick="loginFunction()" value="Login">
     </form>
     <script>
+        var db = Massive.connectSync({db : 'massive-test'});
+        
         function loginFunction() {
         var loginName = document.getElementById("login").submit();
         }
         
         db.users.find(loginName, function(err, res){
   
-            if (typeof (res.id) == number) {
-                window.alert('you are in the database!');
+            if (typeof(res.id) == number) {
+                alert('you are in the database!');
             }else {
-                window.alert('please enter again');
+                alert('please enter again');
             }
 
         });
