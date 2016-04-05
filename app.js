@@ -12,9 +12,15 @@ var users = require('./routes/users');
 var app = express();
 var http = require('http');
 
+var server = http.createServer(function (req, res) {
+    displayForm(res);
+});
+
+
 // Connect to database using Massive.js
 var massive = require("massive");
 var connectionString = "massive-test://jerryzhang:ZFWzfw-1505@localhost:5432/massive-test";
+
 
 // connect to Massive and get the db instance. You can safely use the
 // convenience sync method here because its on app load
@@ -25,6 +31,7 @@ console.log('Database connected.');
 // Set a reference to the massive instance on Express' app:
 app.set('db', massiveInstance);
 http.createServer(app).listen(8080);
+
 
 
 
