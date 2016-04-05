@@ -18,12 +18,13 @@ router.get('/index', function (req, res, next) {
 
 });
 
-router.post('/login', function (req, res ,next){
+router.post('/home', function (req, res ,next){
     var email = req.body.email;
     var pass = req.body.password;
 //    res.send("You suck");       
     console.log(email);
     console.log(pass);
+    res.render('home');
     
 //    try {
 //        results = db.run("select email, password from user");
