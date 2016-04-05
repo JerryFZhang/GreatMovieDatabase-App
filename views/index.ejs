@@ -11,7 +11,7 @@
         <p>Please login first</p>
         Username/Email:
         <br>
-        <input type="text" name="login">
+        <input type="text" name="email">
         <br>
         <br> Password:
         <br>
@@ -25,15 +25,7 @@
             var loginName = document.getElementById("login").submit();
         }
 
-        db.users.find(loginName, function (err, res) {
-
-            if (typeof (res.id) == number) {
-                alert('you are in the database!');
-            } else {
-                alert('please enter again');
-            }
-
-        });
+     
     </script>
 </body>
 

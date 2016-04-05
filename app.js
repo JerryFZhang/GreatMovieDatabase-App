@@ -12,9 +12,9 @@ var users = require('./routes/users');
 var app = express();
 var http = require('http');
 
-var server = http.createServer(function (req, res) {
-    displayForm(res);
-});
+//var server = http.createServer(function (req, res) {
+//    displayForm(res);
+//});
 
 
 // Connect to database using Massive.js
@@ -33,7 +33,11 @@ app.set('db', massiveInstance);
 http.createServer(app).listen(8080);
 
 
-
+//
+//
+//function displayForm(res) {
+// console.log(res.data);
+//}
 
 
 // view engine setup
