@@ -18,21 +18,25 @@ router.get('/index', function (req, res, next) {
 
 });
 
-router.post('/home', function (req, res ,next){
+router.post('/login', function (req, res, next) {
     var email = req.body.email;
-    var pass = req.body.password;
-//    res.send("You suck");       
-    console.log(email);
-    console.log(pass);
+    var password = req.body.password;
+    var userObject;
+
+     db.users.find({
+            email: email
+    }, function (err, res) {
+       userObject = res;
+    });
+    if(res.pass = password){    
     res.render('home');
-    
-//    try {
-//        results = db.run("select email, password from user");
-//        console.log("welcome");
-//
-//    } catch (err) {
-//        console.log('err dected')
-//        console.log(err);
+    }
+    else{
+        res.send("pass failed");
+    }
+//    } else {
+//     res.send("Your login were being declined." + emailValidation + passwordValidation );
+//        
 //    }
     //    db.users.find(loginName, function (err, res) {
     //
