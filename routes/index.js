@@ -18,13 +18,13 @@ router.get('/index', function (req, res, next) {
 
 });
 
-//router.post(url, function (req, res)){
-//    var results = [];
-//    var data = {
-//        login: req.body.login,
-//        password: req.body.password
-//    };
-//    console.log(data);
+router.post('/login', function (req, res ,next){
+    var email = req.body.email;
+    var pass = req.body.password;
+//    res.send("You suck");       
+    console.log(email);
+    console.log(pass);
+    
 //    try {
 //        results = db.run("select email, password from user");
 //        console.log("welcome");
@@ -33,17 +33,17 @@ router.get('/index', function (req, res, next) {
 //        console.log('err dected')
 //        console.log(err);
 //    }
-//    //    db.users.find(loginName, function (err, res) {
-//    //
-//    //            if (typeof (res.id) == number) {
-//    //                alert('you are in the database!');
-//    //            } else {
-//    //                alert('please enter again');
-//    //            }
-//    //
-//    //        });
-//
-//}
+    //    db.users.find(loginName, function (err, res) {
+    //
+    //            if (typeof (res.id) == number) {
+    //                alert('you are in the database!');
+    //            } else {
+    //                alert('please enter again');
+    //            }
+    //
+    //        });
+
+});
 
 
 db.users.find({
