@@ -23,9 +23,12 @@ router.post('/login', function (req, res, next) {
         , function (err, result) {
         if (result[0] !== []){
             
-            res.render('home');
+            res.render('login');
             
-        }
+        }else 
+            {
+                //wrong pass
+            }
         });
 });
 

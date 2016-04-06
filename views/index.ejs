@@ -1,31 +1,26 @@
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title> Welcome </title>
+    <title> Please Sign-in </title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 </head>
 
 <body>
     <h1>MakeMovieGreatAgain</h1>
-    <form id="login" action="login" method = "post">
+    <form id="login" action="login" method="post">
         <p>Please login first</p>
-        Username/Email:
-        <br>
-        <input type="text" name="email">
-        <br>
-        <br> Password:
-        <br>
-        <input type="password" name="password">
-        <br>
-        <br>
-        <input type="button" id="login" onclick="loginFunction()"value="Login">
+        <input type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
+        <p></p>
+        <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
+        <p></p>
+        <input type="button" id="login" onclick="loginFunction()" value="Login">
     </form>
     <script>
         function loginFunction() {
             var loginName = document.getElementById("login").submit();
         }
-
-     
     </script>
 </body>
 
