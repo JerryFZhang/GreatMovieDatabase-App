@@ -21,15 +21,17 @@ router.post('/login', function (req, res, next) {
             , pass: req.body.password
         }
         , function (err, result) {
-        if (result[0] !== []){
+        if (result[0] !== undefined){
             
             res.render('login');
             
         }else 
             {
-                //wrong pass
+             res.send('wrong pass');
             }
         });
 });
+
+
 
 module.exports = router;

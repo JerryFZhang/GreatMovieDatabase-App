@@ -16,11 +16,16 @@
         <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
         <p></p>
         <input type="button" id="login" onclick="loginFunction()" value="Login">
+        <input type="button" id="register" onclick="registerFunction()" value="Sign Up">
+        
     </form>
     <script>
         function loginFunction() {
             var loginName = document.getElementById("login").submit();
         }
+        function registerFunction() {
+			 var registerName = document.getElementById("register").submit();
+		}
     </script>
 </body>
 
