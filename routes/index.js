@@ -4,60 +4,29 @@ var db = Massive.connectSync({
 });
 var express = require('express');
 var router = express.Router();
-var pg = require('pg');
-
-//var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 
 
+//Load index page when request sent.
 router.get('/index', function (req, res, next) {
     res.render('index');
-    console.log('page loaded');
-    console.log('in the getter');
-
-
 });
 
+//Load login page when the request were sent.
 router.post('/login', function (req, res, next) {
-    var email = req.body.email;
-    var password = req.body.password;
-    var userObject;
-
-     db.users.find({
-            email: email
-    }, function (err, res) {
-       userObject = res;
-    });
-    if(res.pass = password){    
-    res.render('home');
-    }
-    else{
-        res.send("pass failed");
-    }
-//    } else {
-//     res.send("Your login were being declined." + emailValidation + passwordValidation );
-//        
-//    }
-    //    db.users.find(loginName, function (err, res) {
-    //
-    //            if (typeof (res.id) == number) {
-    //                alert('you are in the database!');
-    //            } else {
-    //                alert('please enter again');
-    //            }
-    //
-    //        });
-
+    
+    // Find the user using email and pass
+    db.users.find({
+            email: req.body.email
+            , pass: req.body.password
+        }
+        , function (err, result) {
+        if (result[0] !== []){
+            
+            res.render('home');
+            
+        }
+        });
 });
-
-
-db.users.find({
-    email: "zchen088@uottawa.ca"
-}, function (err, res) {
-    console.log(res);
-});
-
-
-
 
 module.exports = router;
