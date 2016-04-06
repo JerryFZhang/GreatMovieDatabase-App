@@ -12,9 +12,6 @@ var users = require('./routes/users');
 var app = express();
 var http = require('http');
 
-//var server = http.createServer(function (req, res) {
-//    displayForm(res);
-//});
 
 
 // Connect to database using Massive.js
@@ -26,18 +23,11 @@ var connectionString = "massive-test://jerryzhang:ZFWzfw-1505@localhost:5432/mas
 // convenience sync method here because its on app load
 // you can also use loadSync - it's an alias
 var massiveInstance = massive.connectSync({connectionString : connectionString}) 
-console.log('Database connected.');
 
 // Set a reference to the massive instance on Express' app:
 app.set('db', massiveInstance);
 http.createServer(app).listen(8080);
 
-
-//
-//
-//function displayForm(res) {
-// console.log(res.data);
-//}
 
 
 // view engine setup
@@ -100,4 +90,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-//module.exports = router;
