@@ -3,8 +3,10 @@
 
 <head>
     <title> Please Sign-in </title>
-    <link rel="stylesheet" href="css/style.css">
+    <!--    <link rel="stylesheet" href="css/style.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,16 +19,17 @@
         <p></p>
         <input type="button" id="login" onclick="loginFunction()" value="Login">
         <input type="button" id="register" onclick="registerFunction()" value="Sign Up">
-        
+
     </form>
     <script>
         function loginFunction() {
             var loginName = document.getElementById("login").submit();
         }
+
         function registerFunction() {
-//			 var registerName = document.getElementById("register").submit();
-            			window.location.href = "signup"
-		}
+            //			 var registerName = document.getElementById("register").submit();
+            window.location.href = "signup"
+        }
     </script>
 </body>
 

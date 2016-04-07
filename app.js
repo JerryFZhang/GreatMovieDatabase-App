@@ -36,6 +36,7 @@ app.set('view engine', 'ejs');//Set the view engine to ejs for renderring html c
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
