@@ -1,24 +1,36 @@
 <!doctype html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <head>
     <title> Please Sign-in </title>
     <!--    <link rel="stylesheet" href="css/style.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+    <!-- Tether for Bootstrap -->
+
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
 </head>
 
 <body>
     <h1>MakeMovieGreatAgain</h1>
     <form id="login" action="login" method="post">
         <p>Please login first</p>
-        <input type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
+        <input class="txtfield" type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
         <p></p>
-        <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
+        <input class="txtfield" type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
         <p></p>
-        <input type="button" id="login" onclick="loginFunction()" value="Login">
-        <input type="button" id="register" onclick="registerFunction()" value="Sign Up">
+        <input class="btn btn-success" type="button" id="login" onclick="loginFunction()" value="Login">
+        <input class="btn btn-link" type="button" id="register" onclick="registerFunction()" value="Sign Up">
 
     </form>
     <script>
@@ -31,6 +43,29 @@
             window.location.href = "signup"
         }
     </script>
+    <style>
+        form {
+            border-style: groove;
+            border-width: 5px;
+            margin: 3vh 25vw;
+            padding: 25px 50px;
+        }
+        
+        .txtfield {
+            padding: 5px;
+            width: 100%;
+        }
+        
+        h1 {
+            margin: 50px;
+            color: black;
+            text-align: center;
+        }
+        .btn{
+            
+            margin: 0px 10px 0px 0px;
+        }
+    </style>
 </body>
 
 </html>

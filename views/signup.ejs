@@ -8,76 +8,113 @@
 </head>
 
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <h1>Make Movie Great Again</h1>
+    <form id="signup" name="signup" method="post" action="signup">
+
+        <input class="txtfield" type="text" name="firstname" placeholder="First Name" id="first" ng-required="true" ng-model="signup.email">
+        <br>
+        <br>
+
+        <input class="txtfield" type="text" name="lastname" placeholder="Last Name" id="last" ng-required="true">
+        <br>
+        <br>
+
+        <input class="txtfield" type="text" placeholder="Email Address" name="email" id="email" ng-required="ture">
+        <br>
+        <br>
+
+        <input class="txtfield" type="number" placeholder="Born in" name="year" id=y ear ng-required="ture" min="1900" max="2016">
+        <br>
+        <br> Gender:
+        <select id="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="U">Undisclosed</option>
+        </select>
+        <br>
+        <br>
+
+        <input class="txtfield" type="password" placeholder="Password" id="pw1" name="pw1" ng-model="pw1" ng-required="">
+        <br>
+        <br>
+
+        <input class="txtfield" type="password" id="pw2" placeholder="Confirm the password" name="pw2" ng-model="pw2" ng-required="">
+        <br>
+        <br>
+
+        <input class="btn btn-success" type="button" id="signup" onclick="signupFunction(first,last,email,year,gender,pw1,pw2)" value="Sign up">
+
+        <input class="btn btn-link" type="button" onclick="backFunction()" value="Back to Login">
+
+    </form>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-    <!-- Tether for Bootstrap -->
-
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
-    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+    <style>
+        form {
+            border-style: groove;
+            border-width: 5px;
+            margin: 3vh 25vw;
+            padding: 25px 50px;
+        }
+        
+        .txtfield {
+            padding: 5px;
+            width: 100%;
+        }
+        
+        h1 {
+            margin: 50px;
+            color: black;
+            text-align: center;
+        }
+        
+        .btn {
+            margin: 0px 10px 0px 0px;
+        }
+    </style>
     <script>
-        function signupFunction(first,last,email,year,gender,p1,p2) {
-			if (first.value=="") {
-				window.alert("First name cannot be empty.");
-				return false;
-			} if (last.value=="") {
-				window.alert("Last name cannot be empty.");
-				return false;
-			} if (email.value=="") {
-				window.alert("Email address cannot be empty.");
-				return false;
-			} if (email.value.indexOf("@")==-1) {
-				window.alert("Please enter a valid email address.");
-				return false;
-			} if (p1.value=="") {
-				window.alert("Password cannot be empty.");
-				return false;
-			} if (p1.value!=p2.value) {
-				window.alert("Please make sure your passwords are identical.");
-				return false;
-			}
+        function signupFunction(first, last, email, year, gender, p1, p2) {
+            if (first.value == "") {
+                window.alert("First name cannot be empty.");
+                return false;
+            }
+            if (last.value == "") {
+                window.alert("Last name cannot be empty.");
+                return false;
+            }
+            if (email.value == "") {
+                window.alert("Email address cannot be empty.");
+                return false;
+            }
+            if (email.value.indexOf("@") == -1) {
+                window.alert("Please enter a valid email address.");
+                return false;
+            }
+            if (p1.value == "") {
+                window.alert("Password cannot be empty.");
+                return false;
+            }
+            if (p1.value != p2.value) {
+                window.alert("Please make sure your passwords are identical.");
+                return false;
+            }
             var userObject = document.getElementById("signup").submit();
-			window.alert("Congratulatious! You have an account now.");
-//			window.location.href = "select_topic.html";
-			return true;
-           
-		}
-		
+            window.alert("Congratulatious! You have an account now.");
+            //			window.location.href = "select_topic.html";
+            return true;
+
+        }
+
         function backFunction() {
             window.location.href = "index"
             return true;
         }
     </script>
-    <h2>Make Movie Great Again</h2>
-    <form id="signup" name="signup" method="post" action="signup">
-
-        <input type="text" name="firstname" placeholder="First Name" id="first" ng-required="true" ng-model="signup.email"><br>
-        
-        <input type="text" name="lastname" placeholder="Last Name" id="last" ng-required="true"><br>
-
-        <input type="text" placeholder="Email Address" name="email" id="email" ng-required="ture"><br>
-
-        <input type="number" placeholder="Born in" name="year" id=y ear ng-required="ture" min="1900" max="2016"><br>
-
-        Gender:
-        <select id="gender">
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="U">Undisclosed</option>
-        </select><br>
-
-        <input type="password" placeholder="Password" id="pw1" name="pw1" ng-model="pw1" ng-required=""><br>
-
-        <input type="password" id="pw2" placeholder="Confirm the password" name="pw2" ng-model="pw2" ng-required=""><br>
-
-        <input type="button" id="signup" onclick="signupFunction(first,last,email,year,gender,pw1,pw2)" value="Sign up">
-
-        <input type="button" onclick="backFunction()" value="Back to Login">
-
-
-
-    </form>
-
-</body>
-
 </html>
