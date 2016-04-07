@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Make Movie Great Again - Register Page</title>
+    <title>Make Movie Great Again - Signup Page</title>
     <!--		<link rel="stylesheet" href="login_register.css">-->
 </head>
 
@@ -16,7 +16,7 @@
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
     <script>
-        function registerFunction(first,last,email,year,gender,p1,p2) {
+        function signupFunction(first,last,email,year,gender,p1,p2) {
 			if (first.value=="") {
 				window.alert("First name cannot be empty.");
 				return false;
@@ -36,9 +36,11 @@
 				window.alert("Please make sure your passwords are identical.");
 				return false;
 			}
+            var userObject = document.getElementById("signup").submit();
 			window.alert("Congratulatious! You have an account now.");
-			window.location.href = "select_topic.html";
+//			window.location.href = "select_topic.html";
 			return true;
+           
 		}
 		
         function backFunction() {
@@ -47,42 +49,28 @@
         }
     </script>
     <h2>Make Movie Great Again</h2>
-    <form id="register" name="register" action="">
+    <form id="signup" name="signup" method="post" action="signup">
 
-        <p style="color : red;">Please enter the following information</p>
+        <input type="text" name="firstname" placeholder="First Name" id="first" ng-required="true" ng-model="signup.email"><br>
+        
+        <input type="text" name="lastname" placeholder="Last Name" id="last" ng-required="true"><br>
 
-        <input type="text" name="firstname" placeholder="First Name" id="first" ng-required="true" ng-model="register.email">
+        <input type="text" placeholder="Email Address" name="email" id="email" ng-required="ture"><br>
 
-        <br>
+        <input type="number" placeholder="Born in" name="year" id=y ear ng-required="ture" min="1900" max="2016"><br>
 
-        <input type="text" name="lastname" placeholder="Last Name" id="last" ng-required="true">
-
-        <br>
-
-        <input type="text" placeholder="Email Address" name="email" id="email" ng-required="ture">
-
-        <br>
-
-        <input type="number" placeholder="Born in" name="year" id=y ear ng-required="ture" min="1900" max="2016">
-
-        <br>
-
-        <br> Gender:
+        Gender:
         <select id="gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="U">Undisclosed</option>
-        </select>
+        </select><br>
 
-        <input type="password" placeholder="Password" id="pw1" name="pw1" ng-model="pw1" ng-required="">
+        <input type="password" placeholder="Password" id="pw1" name="pw1" ng-model="pw1" ng-required=""><br>
 
-        <br>
+        <input type="password" id="pw2" placeholder="Confirm the password" name="pw2" ng-model="pw2" ng-required=""><br>
 
-        <input type="password" id="pw2" placeholder="Confirm the password" name="pw2" ng-model="pw2" ng-required="">
-
-        <br>
-
-        <input type="button" id="register" onclick="registerFunction(first,last,email,year,gender,pw1,pw2)" value="Register">
+        <input type="button" id="signup" onclick="signupFunction(first,last,email,year,gender,pw1,pw2)" value="Sign up">
 
         <input type="button" onclick="backFunction()" value="Back to Login">
 
