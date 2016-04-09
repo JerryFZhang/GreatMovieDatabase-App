@@ -7,6 +7,7 @@
 
 <body>
     <h1>Make Movie Great Again</h1>
+    <div class = "form-body">
     <form id="signup" name="signup" method="post" action="signup">
         <input class="txtfield" type="text" name="firstname" placeholder="First Name" id="first" ng-required="true" ng-model="signup.email">
         <br>
@@ -24,9 +25,10 @@
         <br>
         <br> Gender:
         <select id="gender">
+            <option value="U">Undisclosed</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
-            <option value="U">Undisclosed</option>
+            
         </select>
         <br>
         <br>
@@ -34,16 +36,16 @@
         <input class="txtfield" type="password" placeholder="Password" id="pw1" name="pw1" ng-model="pw1" ng-required="">
         <br>
         <br>
-
         <input class="txtfield" type="password" id="pw2" placeholder="Confirm the password" name="pw2" ng-model="pw2" ng-required="">
+        
         <br>
         <br>
-
         <input class="btn btn-success" type="button" id="signup" onclick="signupFunction(first,last,email,year,gender,pw1,pw2)" value="Sign up">
 
         <input class="btn btn-link" type="button" onclick="backFunction()" value="Back to Login">
 
     </form>
+    </div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
@@ -54,7 +56,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
 <style>
-    form {
+    .form-body {
         border-style: groove;
         border-width: 5px;
         margin: 3vh 25vw;
@@ -103,8 +105,7 @@
             return false;
         }
         var userObject = document.getElementById("signup").submit();
-        window.alert("Congratulatious! You have an account now.");
-        //			window.location.href = "select_topic.html";
+//        window.alert("Congratulatious! You have an account now.");
         return true;
 
     }
