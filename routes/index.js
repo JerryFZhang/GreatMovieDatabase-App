@@ -95,7 +95,7 @@ router.post('/signup', function (req, res, next) {
                         if (insertionChecing === []) {
                             res.send('internal error');
                         } else {
-                            res.send('please login now.');
+                            res.render('login');
                         }
                     });
                 });
@@ -107,13 +107,14 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.post('/allMovie', function(req, res, next){
-   
+    
     console.log('request');
-    console.log(req.body);
+    console.log(req);
+    res.send ('all movie');
 });
 
-db.run("select * from users", function (err, result) {
-    console.log(result);
-});
+//db.run("select * from users", function (err, result) {
+//    console.log(result);
+//});
 
 module.exports = router;

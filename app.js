@@ -34,8 +34,6 @@ http.createServer(app).listen(8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');//Set the view engine to ejs for renderring html content.
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -46,13 +44,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-app.use('/users', users);
 
 
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
-  res.send('Welcome to the db');
+  res.render('welcome');
 });
 
 
