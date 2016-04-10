@@ -7,12 +7,10 @@ var router = express.Router();
 
 
 
-//Load index page when request sent.
 router.get('/index', function (req, res, next) {
     res.render('index');
 });
 
-//Load login page when the request were sent.
 router.post('/login', function (req, res, next) {
     console.log(req.body);
     // Find the user using email and pass
@@ -94,7 +92,7 @@ router.post('/signup', function (req, res, next) {
                         email: userObject.email
                     }, function (err, insertionChecking) {
                         console.log(insertionChecking);
-                        if (insertionChecing !== []) {
+                        if (insertionChecing === []) {
                             res.send('internal error');
                         } else {
                             res.send('please login now.');
@@ -108,6 +106,11 @@ router.post('/signup', function (req, res, next) {
     });
 });
 
+router.post('/allMovie', function(req, res, next){
+   
+    console.log('request');
+    console.log(req.body);
+});
 
 db.run("select * from users", function (err, result) {
     console.log(result);
