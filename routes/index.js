@@ -108,7 +108,7 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.get('/allmovie', function (req, res, next) {
-    db.run("select * from movie inner join country on movie.countryid = country.countryid;", function (err, result) {
+    db.run("SELECT * FROM movie INNER JOIN country ON movie.countryid = country.countryid;", function (err, result) {
         var transform = {
             'tag': 'tr'
             , 'html': '<td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
@@ -121,10 +121,10 @@ router.get('/allmovie', function (req, res, next) {
 });
 
 router.get('/allactor', function (req, res, next) {
-    db.run("select * from actor;", function (err, result) {
+    db.run("SELECT * FROM actor INNER JOIN country ON actor.CountryId = country.CountryId;", function (err, result) {
         var transform = {
             'tag': 'tr'
-            , 'html': '<td>${first_name}&nbsp;${last_name}</td><td>${CountryId}</td>'
+            , 'html': '<td>${first_name}&nbsp;${last_name}</td><td>${cdescription}</td>'
         };
         var data = result;
         var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
