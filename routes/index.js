@@ -113,7 +113,7 @@ router.get('/allmovie', function (req, res, next) {
         
         var transform = {
             'tag': 'tr'
-            , 'html': '<td><a href = "/images/${movieid}.jpeg"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td><td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
+            , 'html': '<td><a href="/images/${movieid}.jpeg" data-lightbox="${movieid} data-title="${mname}"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td><td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
         };
         
         var data = result;
@@ -166,6 +166,22 @@ router.get('/alldirector', function (req, res, next) {
         var data = result;
         var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
         
+        res.send(table);
+    });
+});
+
+router.get('/movietopics', function (req, res, next) {
+    
+    db.run("SELECT m.movieid,m.mname,t.description FROM movietopics mt inner join movie m on m.movieid = mt.movieid inner join topic t on t.topicid = mt.topicid;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td><a href="/images/${movieid}.jpeg" data-lightbox="${movieid} data-title="${mname}"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td><td>${mname}</td><td>${description}</td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Topic</th></tr>"+json2html.transform(data, transform);
+
         res.send(table);
     });
 });
