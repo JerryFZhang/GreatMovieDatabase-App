@@ -208,6 +208,21 @@ router.get('/movietopics', function (req, res, next) {
         res.send(table);
     });
 });
+router.get('/moviedirectors', function (req, res, next) {
+    
+    db.run("select movie.movieid, movie.mname,director.lastname,director.firstname from movie inner join directs on directs.movieid = movie.movieid inner join director on directs.directorid = director.directorid;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td><a href="/images/${movieid}.jpeg" data-lightbox="${movieid} data-title="${mname}"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td><td>${mname}</td><td>${lastname} ${firstname}</td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Topic</th></tr>"+json2html.transform(data, transform);
+
+        res.send(table);
+    });
+});
 //db.run("select * from users", function (err, result) {
 //    console.log(result);
 //});
