@@ -4,7 +4,8 @@ var db = Massive.connectSync({
 });
 var express = require('express');
 var router = express.Router();
-
+var request = require('request');
+var json2html = require('node-json2html');
 
 
 router.get('/index', function (req, res, next) {
@@ -28,6 +29,7 @@ router.post('/login', function (req, res, next) {
                 res.send('wrong pass');
             }
         });
+
 });
 
 router.get('/signup', function (req, res, next) {
@@ -35,7 +37,6 @@ router.get('/signup', function (req, res, next) {
 });
 
 router.post('/signup', function (req, res, next) {
-
     var userObject = req.body;
     var allUser;
     var lastUser;
@@ -92,7 +93,7 @@ router.post('/signup', function (req, res, next) {
                         email: userObject.email
                     }, function (err, insertionChecking) {
                         console.log(insertionChecking);
-                        if (insertionChecing === []) {
+                        if (insertionChecking === []) {
                             res.send('internal error');
                         } else {
                             res.render('login');
@@ -106,13 +107,30 @@ router.post('/signup', function (req, res, next) {
     });
 });
 
-router.post('/allMovie', function(req, res, next){
-    
-    console.log('request');
-    console.log(req);
-    res.send ('all movie');
+router.get('/allmovie', function (req, res, next) {
+    db.run("select * from movie inner join country on movie.countryid = country.countryid;", function (err, result) {
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
+        };
+        var data = result;
+        var table = "<tr><th>Movie Name</th><th>Release Date</th><th>Country</th></tr>"+json2html.transform(data, transform);
+
+        res.send(table);
+    });
 });
 
+router.get('/allactor', function (req, res, next) {
+    db.run("select * from actor;", function (err, result) {
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${first_name}&nbsp;${last_name}</td><td>${CountryId}</td>'
+        };
+        var data = result;
+        var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        res.send(table);
+    });
+});
 //db.run("select * from users", function (err, result) {
 //    console.log(result);
 //});

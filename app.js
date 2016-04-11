@@ -13,7 +13,6 @@ var app = express();
 var http = require('http');
 
 
-
 // Connect to database using Massive.js
 var massive = require("massive");
 var connectionString = "massive-test://jerryzhang:ZFWzfw-1505@localhost:5432/massive-test";
@@ -44,25 +43,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-
-
-
-// respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
   res.render('welcome');
 });
 
 
-// catch 404 and forward to error handler
+
+// catch 404 and forward to error handler 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
-// error handlers
-
-
 
 // development error handler
 // will print stacktrace

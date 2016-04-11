@@ -3,27 +3,17 @@
 
 <head>
     <title> Welcome </title>
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+    <script>
+        var $content = $('#')
+    </script>
     <style>
-        .form-body {
-            border-style: groove;
-            border-width: 5px;
-            margin: 3vh 25vw;
-            padding: 25px 50px;
-        }
-        
-        .txtfield {
-            padding: 5px;
-            width: 100%;
-        }
-        
         h1 {
             margin: 50px;
             color: #333 text-align: center;
@@ -32,34 +22,50 @@
         .btn {
             margin: 0px 10px 0px 0px;
         }
+        table, th, td{
+            margin: 2px;
+            padding: 5px;
+            border: 1px solid black;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script>
-        //        function showAllMovie(str) {
-        //            var xhttp;
-        //            if (str == "") {
-        //                document.getElementById("txtHint").innerHTML = "";
-        //                return;
-        //            }
-        //            xhttp = new XMLHttpRequest();
-        //            xhttp.onreadystatechange = function () {
-        //                if (xhttp.readyState == 4 && xhttp.status == 200) {
-        //                    document.getElementById("txtHint").innerHTML = xhttp.responseText;
-        //                }
-        //            };
-        //            xhttp.open("GET", "getcustomer.asp?q=" + str, true);
-        //            xhttp.send();
-        //        }
-        //        
-        function allMovie() {
-            var allMovie = document.getElementById('allMovie').submit();
-        }
+        $(document).ready(function (e) {
+
+            var $buttons = $('#buttons');
+            $('#buttons').find('input').on('click', function (e) {
+                var $desc = $("#content")
+                switch ($(this).attr('value')){
+                    case 'All Movie':
+                    $desc.load('allmovie');
+                        break;
+                    case 'All Actor':
+                    $desc.load('allactor');
+                        break;
+                    case 'All Topics':
+                    $desc.load('alltopic');
+                        break;
+                    case 'All Director':
+                    $desc.load('alldirector');
+                        break;                   
+                        
+                }
+            });
+
+
+        });
     </script>
 </head>
 
 <body>
-    <h1>Welcome to the movie database</h1>
-    <input class="btn btn-success" type="button" id="allMovie" onchange="allMovie(this.value)" value="AllMovie" method="post" action="allMovie">
+    <h1 align='center'>Select the list that you want to see</h1>
+    <div id = 'buttons'>
+        <input class="btn btn" type="button" value="All Movie">
+        <input class="btn btn" type="button" value="All Actor">
+        <input class="btn btn" type="button" value="All Topic">
+        <input class="btn btn" type="button" value="All Director">
+    </div>
+    <div id="content">123</div>
 </body>
 
 
