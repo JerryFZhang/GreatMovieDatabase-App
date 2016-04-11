@@ -108,26 +108,64 @@ router.post('/signup', function (req, res, next) {
 });
 
 router.get('/allmovie', function (req, res, next) {
+    
     db.run("SELECT * FROM movie INNER JOIN country ON movie.countryid = country.countryid;", function (err, result) {
+        
         var transform = {
             'tag': 'tr'
-            , 'html': '<td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
+            , 'html': '<td><a href = "/images/${movieid}.jpeg"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td><td>${mname}</td><td>${date_relased}</td><td>${cdescription}</td>'
         };
+        
         var data = result;
-        var table = "<tr><th>Movie Name</th><th>Release Date</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Release Date</th><th>Country</th></tr>"+json2html.transform(data, transform);
 
         res.send(table);
     });
 });
 
 router.get('/allactor', function (req, res, next) {
+    
     db.run("SELECT * FROM actor INNER JOIN country ON actor.CountryId = country.CountryId;", function (err, result) {
+    
         var transform = {
             'tag': 'tr'
-            , 'html': '<td>${first_name}&nbsp;${last_name}</td><td>${cdescription}</td>'
+            , 'html': '<td>${first_name} ${last_name}</td><td>${cdescription}</td>'
         };
+        
         var data = result;
         var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        
+        res.send(table);
+    });
+});
+
+router.get('/alltopic', function (req, res, next) {
+    
+    db.run("SELECT * FROM topic;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${description}</td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Topics</th></tr>"+json2html.transform(data, transform);
+        
+        res.send(table);
+    });
+});
+router.get('/alldirector', function (req, res, next) {
+    
+    db.run("SELECT d.lastname, d.firstname,c.Cdescription FROM director d INNER JOIN country c ON d.countryId = c.countryId GROUP BY d.lastname, d.firstname, c.cdescription;;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${firstname} ${lastname}</td><td>${cdescription}</td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        
         res.send(table);
     });
 });

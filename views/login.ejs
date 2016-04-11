@@ -26,6 +26,7 @@
             margin: 2px;
             padding: 5px;
             border: 1px solid black;
+            text-align: left;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
@@ -36,16 +37,16 @@
             $('#buttons').find('input').on('click', function (e) {
                 var $desc = $("#content")
                 switch ($(this).attr('value')){
-                    case 'All Movie':
+                    case 'All Movies':
                     $desc.load('allmovie');
                         break;
-                    case 'All Actor':
+                    case 'All Actors':
                     $desc.load('allactor');
                         break;
                     case 'All Topics':
                     $desc.load('alltopic');
                         break;
-                    case 'All Director':
+                    case 'All Directors':
                     $desc.load('alldirector');
                         break;                   
                         
@@ -60,10 +61,10 @@
 <body>
     <h1 align='center'>Select the list that you want to see</h1>
     <div id = 'buttons' align="center" style="padding: 50px;">
-        <input class="btn btn" type="button" value="All Movie">
-        <input class="btn btn" type="button" value="All Actor">
-        <input class="btn btn" type="button" value="All Topic">
-        <input class="btn btn" type="button" value="All Director">
+        <input class="btn btn" type="button" value="All Movies">
+        <input class="btn btn" type="button" value="All Actors">
+        <input class="btn btn" type="button" value="All Topics">
+        <input class="btn btn" type="button" value="All Directors">
     </div>
     <div id="content" align="center">You did not select anything</div>
 </body>
