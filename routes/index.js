@@ -139,7 +139,7 @@ router.get('/allmovie', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Release Date</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Poster</th><th>Movie Name</th><th>Release Date</th><th>Country</th></tr>"+json2html.transform(data, transform)+"</table>";
 
         res.send(table);
     });
@@ -155,7 +155,7 @@ router.get('/allactor', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform)+"</table>";
         
         res.send(table);
     });
@@ -171,7 +171,7 @@ router.get('/alltopic', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Topics</th></tr>"+json2html.transform(data, transform);
+        var table = "<tr><th>Topics</th></tr>"+json2html.transform(data, transform)+"</table>";
         
         res.send(table);
     });
@@ -183,11 +183,11 @@ router.get('/alldirector', function (req, res, next) {
         
         var transform = {
             'tag': 'tr'
-            , 'html': '<td>${firstname} ${lastname}</td><td>${cdescription}</td>'
+            , 'html': '<table class = \"table table-hover\"><td>${firstname} ${lastname}</td><td>${cdescription}</td>'
         };
         
         var data = result;
-        var table = "<tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Name</th><th>Country</th></tr>"+json2html.transform(data, transform)+"</table>";
         
         res.send(table);
     });
@@ -203,7 +203,7 @@ router.get('/movietopics', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Topic</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Poster</th><th>Movie Name</th><th>Topic</th></tr>"+json2html.transform(data, transform)+"</table>";
 
         res.send(table);
     });
@@ -218,7 +218,7 @@ router.get('/moviedirectors', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Actor</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Poster</th><th>Movie Name</th><th>Actor</th></tr>"+json2html.transform(data, transform)+"</table>";
 
         res.send(table);
     });
@@ -234,7 +234,7 @@ router.get('/allstudios', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Studio Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Studio Name</th><th>Country</th></tr>"+json2html.transform(data, transform)+"</table>";
 
         res.send(table);
     });
@@ -249,7 +249,7 @@ router.get('/moviestudios', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Studio Name</th><th>Movie Name</th><th>Poster</th></tr>"+json2html.transform(data, transform);
+        var table = "<table class = \"table table-hover\"><tr><th>Studio Name</th><th>Movie Name</th><th>Poster</th></tr>"+json2html.transform(data, transform)+"</table>";
 
         res.send(table);
     });

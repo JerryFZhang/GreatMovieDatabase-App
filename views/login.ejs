@@ -18,7 +18,7 @@
         }
         
         .btn {
-            margin: 0px 10px 0px 0px;
+            margin: 10px;
         }
         
         table,
@@ -29,11 +29,18 @@
             border: 1px solid black;
             text-align: left;
         }
+        
+        select {
+            padding: 10px;
+            margin: 20px;
+        }
     </style>
     <script>
+        
         $(document).ready(function (e) {
 
             var $buttons = $('#buttons');
+            var $select = $('#select')
             $('#buttons').find('input').on('click', function (e) {
 
                 var $desc = $("#content")
@@ -84,6 +91,35 @@
         <input class="btn btn" type="button" value="Movie With Topics">
         <input class="btn btn" type="button" value="Movie With Directors">
         <input class="btn btn" type="button" value="Movie With Studios">
+<!--
+        <select id='select' onchange='selected()'>
+            <option id = "1">Historical</option>
+            <option id = "2">Drama</option>
+            <option id = "3">Romantic</option>
+            <option id = "4">Biographical</option>
+            <option id = "5">Epic</option>
+            <option id = "6">Science fiction</option>
+            <option id = "7">Servival</option>
+            <option id = "8">War</option>
+            <option id = "9">Thriller</option>
+            <option id = "10">Independent</option>
+            <option id = "11">Psychological</option>
+            <option id = "12">Comedy</option>
+            <option id = "13">Fantasy</option>
+            <option id = "14">Action</option>
+            <option id = "15">Mystery</option>
+            <option id = "16">Crime</option>
+            <option id = "17">Documentary</option>
+            <option id = "18">Disaster</option>
+            <option id = "19">Horror</option>
+            <option id = "20">Cartoon</option>
+            <option id = "21">Opera</option>
+            <option id = "22">Art</option>
+            <option id = "23">Dance</option>
+            <option id = "24">Nior</option>
+            <option id = "25">Sport</option>
+        </select>
+-->
     </div>
     <div id="content" align="center">You did not select anything</div>
 </body>
