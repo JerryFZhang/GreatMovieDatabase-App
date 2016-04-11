@@ -51,6 +51,9 @@
                 case 'All Topics':
                     $desc.load('alltopic');
                     break;
+                case 'All Studios':
+                    $desc.load('allstudios');
+                    break;
 
                 case 'All Directors':
                     $desc.load('alldirector');
@@ -60,6 +63,9 @@
                     break;
                 case 'Movie With Directors':
                     $desc.load('moviedirectors')
+                    break;
+                case 'Movie With Studios':
+                    $desc.load('moviestudios')
                     break;
                 }
             });
@@ -74,8 +80,10 @@
         <input class="btn btn" type="button" value="All Actors">
         <input class="btn btn" type="button" value="All Topics">
         <input class="btn btn" type="button" value="All Directors">
+        <input class="btn btn" type="button" value="All Studios">
         <input class="btn btn" type="button" value="Movie With Topics">
         <input class="btn btn" type="button" value="Movie With Directors">
+        <input class="btn btn" type="button" value="Movie With Studios">
     </div>
     <div id="content" align="center">You did not select anything</div>
 </body>

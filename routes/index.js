@@ -195,7 +195,7 @@ router.get('/alldirector', function (req, res, next) {
 
 router.get('/movietopics', function (req, res, next) {
     
-    db.run("SELECT m.movieid,m.mname,t.description FROM movietopics mt inner join movie m on m.movieid = mt.movieid inner join topic t on t.topicid = mt.topicid;", function (err, result) {
+    db.run("SELECT m.movieid,m.mname,t.description FROM movietopics mt inner join movie m on m.movieid = mt.movieid INNER JOIN topic t ON t.topicid = mt.topicid;", function (err, result) {
         
         var transform = {
             'tag': 'tr'
@@ -218,11 +218,43 @@ router.get('/moviedirectors', function (req, res, next) {
         };
         
         var data = result;
-        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Topic</th></tr>"+json2html.transform(data, transform);
+        var table = "<tr><th>Poster</th><th>Movie Name</th><th>Actor</th></tr>"+json2html.transform(data, transform);
 
         res.send(table);
     });
 });
+
+router.get('/allstudios', function (req, res, next) {
+    
+    db.run("select * from studio inner join country on country.countryid = studio.countryid;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${sname}</td><td>${cdescription}</td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Studio Name</th><th>Country</th></tr>"+json2html.transform(data, transform);
+
+        res.send(table);
+    });
+});
+router.get('/moviestudios', function (req, res, next) {
+    
+    db.run("select * from studio inner join country on country.countryid = studio.countryid inner join sponsors on sponsors.studioid = studio.studioid inner join movie on movie.movieid = sponsors.movieid;", function (err, result) {
+        
+        var transform = {
+            'tag': 'tr'
+            , 'html': '<td>${sname}</td><td>${mname}</td><td><a href="/images/${movieid}.jpeg" data-lightbox="${movieid} data-title="${mname}"><img src="/images/${movieid}.jpeg" height="42" width="42"></a></td>'
+        };
+        
+        var data = result;
+        var table = "<tr><th>Studio Name</th><th>Movie Name</th><th>Poster</th></tr>"+json2html.transform(data, transform);
+
+        res.send(table);
+    });
+});
+
 //db.run("select * from users", function (err, result) {
 //    console.log(result);
 //});
