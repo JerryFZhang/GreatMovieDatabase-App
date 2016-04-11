@@ -12,6 +12,28 @@ router.get('/index', function (req, res, next) {
     res.render('index');
 });
 
+router.get('/delete', function (req, res, next) {
+    res.render('deleteacc');
+});
+router.post('/delete', function (req, res, next) { 
+    console.log(req.body);
+    // Find the user using email and pass
+    db.users.destroy({
+            pass: req.body.password
+            , email: req.body.email
+        }
+        , function (err, result) {
+            console.log('result' + result);
+            if (result[0] !== undefined) {
+
+                res.send('User Deleted');
+
+            } else {
+                res.send('Wrong passord or user does not exist');
+            }
+        });
+});
+
 router.post('/login', function (req, res, next) {
     console.log(req.body);
     // Find the user using email and pass
@@ -26,7 +48,7 @@ router.post('/login', function (req, res, next) {
                 res.render('login');
 
             } else {
-                res.send('wrong pass');
+                res.send('Wrong passord or user does not exist');
             }
         });
 
@@ -154,6 +176,7 @@ router.get('/alltopic', function (req, res, next) {
         res.send(table);
     });
 });
+
 router.get('/alldirector', function (req, res, next) {
     
     db.run("SELECT d.lastname, d.firstname,c.Cdescription FROM director d INNER JOIN country c ON d.countryId = c.countryId GROUP BY d.lastname, d.firstname, c.cdescription;;", function (err, result) {

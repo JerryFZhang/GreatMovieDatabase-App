@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> Please Sign-in </title>
+    <title> Delete Account </title>
     <script src="js/jquery.min.js"></script>
     <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js.css"></script>
@@ -12,13 +12,13 @@
     <link href="css/lightbox.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <script>
-        function loginFunction() {
-            var loginName = document.getElementById("login").submit();
+        function deleteFunction() {
+            var deleteName = document.getElementById("delete").submit();
         }
 
-        function registerFunction() {
+        function backFunction() {
             //			 var registerName = document.getElementById("register").submit();
-            window.location.href = "signup"
+            window.location.href = "/";
         }
     </script>
     <style>
@@ -50,14 +50,17 @@
 
 <body>
     <h1>Make Movie Great Again</h1>
-    <form id="login" action="login" method="post">
-        <p>Please login first</p>
+    <form id="delete" action="delete" method="post">
+        <p>Please Enter The Account Information</p>
         <input class="txtfield" type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
         <p></p>
         <input class="txtfield" type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true">
-        <p></p>
-        <input class="btn btn-success" type="button" id="login" onclick="loginFunction()" value="Login">
-        <input class="btn btn-link" type="button" id="register" onclick="registerFunction()" value="Sign Up">
+        <br>
+                <br>
+        <p>This will delete your personal information Are you sure?</p>
+
+        <input class="btn btn-danger" type="button" id="delete" onclick="deleteFunction()" value="Yes,I confirm.">
+        <input class="btn btn-link" type="button" id="back" onclick="backFunction()" value="back">
     </form>
 </body>
 

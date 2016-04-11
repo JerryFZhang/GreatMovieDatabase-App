@@ -4,7 +4,7 @@
 <head>
     <title> Welcome </title>
     <script src="js/jquery.min.js"></script>
-    <script src="jstether.min.js"></script>
+    <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js.css"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/lightbox.min.js"></script>
@@ -18,6 +18,9 @@
 
         function loginFunction() {
             window.location.href = "index"
+        }
+        function deleteFunction() {
+            window.location.href = "delete"
         }
     </script>
     <style>
@@ -53,7 +56,7 @@
         <br>
         <input class="btn btn-primary" type="button" id="register" onclick="registerFunction()" value="Sign Up">
         <br>
-        <input class="btn btn-danger" type="button" id="register" onclick="registerFunction()" value="Delete Account (DANGER)">
+        <input class="btn btn-danger" type="button" id="delete" onclick="deleteFunction()" value="Delete Account (DANGER)">
 
     </div>
 </body>
