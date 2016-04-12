@@ -15,7 +15,8 @@ var http = require('http');
 
 // Connect to database using Massive.js
 var massive = require("massive");
-var connectionString = "massive-test://jerryzhang:ZFWzfw-1505@localhost:5432/massive-test";
+// User your own database name, username password and port(default 5432)
+var connectionString = "database-name://username:password@localhost:5432/database-name";
 
 
 // connect to Massive and get the db instance. You can safely use the
