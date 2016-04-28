@@ -16,13 +16,13 @@ var http = require('http');
 // Connect to database using Massive.js
 var massive = require("massive");
 // User your own database name, username password and port(default 5432)
-var connectionString = "database-name://username:password@localhost:5432/database-name";
+var connectionString = "massive-test://jerryzhang:ZFWzfw-1505@localhost:5432/massive-test";
 
 
 // connect to Massive and get the db instance. You can safely use the
 // convenience sync method here because its on app load
 // you can also use loadSync - it's an alias
-var massiveInstance = massive.connectSync({connectionString : connectionString}) 
+var massiveInstance = massive.connectSync({connectionString : connectionString})
 
 // Set a reference to the massive instance on Express' app:
 app.set('db', massiveInstance);
@@ -50,7 +50,7 @@ app.get('/', function(req, res) {
 
 
 
-// catch 404 and forward to error handler 
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
